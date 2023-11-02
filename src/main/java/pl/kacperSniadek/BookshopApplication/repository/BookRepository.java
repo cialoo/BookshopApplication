@@ -12,7 +12,4 @@ import java.util.List;
 public interface BookRepository extends JpaRepository<Book, Long> {
     List<Book> findAll();
 
-    @Query("SELECT b FROM Book b JOIN Cart c ON b.id = c.bookId")
-    List<Book> findBooksInCart(List<Cart> cartItems);
-
 }

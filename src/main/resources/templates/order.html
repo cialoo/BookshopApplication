@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>BookshopApplication</title>
+</head>
+<body>
+    <h1>Welcome to Bookshop!!!</h1>
+    <h2>By Kacper Śniadek</h2>
+
+    <h2>Order</h2>
+    <p>Ilość książek: <span th:text="${totalQuantity}"></span></p>
+    <p>Całkowita cena: <span th:text="${totalPrice}"></span></p>
+
+    <form action="/" method="get">
+        <button type="submit" class="btn btn-primary">Books</button>
+    </form>
+    <form action="/cart" method="get">
+        <button type="submit" class="btn btn-primary">Cart</button>
+    </form>
+</body>
+</html>

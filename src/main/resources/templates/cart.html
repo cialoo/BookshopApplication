@@ -8,6 +8,7 @@
     <h1>Welcome to cart!!!</h1>
     <h2>By Kacper Śniadek</h2>
 
+    <h2>Cart</h2>
     <table border="1">
         <tr th:each="cartItem : ${cartItems}">
             <td th:text="${cartItem.bookTitle}"></td>
@@ -19,6 +20,9 @@
 
     <form action="/" method="get">
         <button type="submit" class="btn btn-primary">Books</button>
+    </form>
+    <form action="/order" method="get">
+        <button type="submit" class="btn btn-primary">Order</button>
     </form>
 
 </body>

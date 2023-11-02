@@ -49,4 +49,21 @@ public class ApplicationController {
         model.addAttribute("cartItems", cartItems);
         return "cart";
     }
+
+    @GetMapping("/order")
+    public String order(Model model) {
+        List<Cart> cartItems = cartRepository.findAll();
+
+        int totalQuantity = 0;
+        double totalPrice = 0.0;
+
+        for (Cart cartItem : cartItems) {
+            totalQuantity += 1;
+            totalPrice += cartItem.getBookPrice();
+        }
+
+        model.addAttribute("totalQuantity", totalQuantity);
+        model.addAttribute("totalPrice", totalPrice);
+        return "order";
+    }
 }
