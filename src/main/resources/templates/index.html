@@ -23,10 +23,10 @@
             <td th:text="${book.year}"></td>
             <td th:text="${book.price}"></td>
             <td>
-<!--                <form th:action="@{/}" method="post">-->
-<!--                    <input type="hidden" name="bookId" th:value="${book.id}">-->
-<!--                    <button type="submit" class="add-to-cart-button">Add to Cart</button>-->
-<!--                </form>-->
+                <form th:action="@{/add-to-cart}" method="post">
+                    <input type="hidden" name="bookId" th:value="${book.id}" />
+                    <button type="submit">Add to cart</button>
+                </form>
             </td>
         </tr>
     </table>
