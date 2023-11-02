@@ -15,6 +15,11 @@
             <td th:text="${cartItem.bookAuthor}"></td>
             <td th:text="${cartItem.bookYear}"></td>
             <td th:text="${cartItem.bookPrice}"></td>
+            <td>
+                <form th:action="@{'/remove-from-cart/' + ${cartItem.id}}" method="post">
+                    <button type="submit" class="btn btn-danger">Usuń</button>
+                </form>
+            </td>
         </tr>
     </table>
 

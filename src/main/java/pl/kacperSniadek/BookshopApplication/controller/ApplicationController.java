@@ -50,6 +50,12 @@ public class ApplicationController {
         return "cart";
     }
 
+    @PostMapping("/remove-from-cart/{cartItemId}")
+    public String removeFromCart(@PathVariable Long cartItemId) {
+        cartRepository.deleteById(cartItemId);
+        return "redirect:/cart";
+    }
+
     @GetMapping("/order")
     public String order(Model model) {
         List<Cart> cartItems = cartRepository.findAll();
