@@ -17,7 +17,7 @@
             <td th:text="${cartItem.bookPrice}"></td>
             <td>
                 <form th:action="@{'/remove-from-cart/' + ${cartItem.id}}" method="post">
-                    <button type="submit" class="btn btn-danger">Usuń</button>
+                    <button type="submit" class="btn btn-danger">Delete</button>
                 </form>
             </td>
         </tr>
