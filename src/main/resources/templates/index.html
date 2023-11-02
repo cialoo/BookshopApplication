@@ -9,25 +9,31 @@
     <h2>By Kacper Śniadek</h2>
 
     <h1>Books</h1>
-    <table>
-        <thead>
+    <table border="1">
         <tr>
             <th>Tittle</th>
             <th>Author</th>
             <th>Year</th>
             <th>Price</th>
+            <th>Add to cart</th>
         </tr>
-        </thead>
-        <tbody>
         <tr th:each="book : ${books}">
             <td th:text="${book.title}"></td>
             <td th:text="${book.author}"></td>
             <td th:text="${book.year}"></td>
             <td th:text="${book.price}"></td>
+            <td>
+<!--                <form th:action="@{/}" method="post">-->
+<!--                    <input type="hidden" name="bookId" th:value="${book.id}">-->
+<!--                    <button type="submit" class="add-to-cart-button">Add to Cart</button>-->
+<!--                </form>-->
+            </td>
         </tr>
-        </tbody>
     </table>
 
+    <form action="/cart" method="get">
+        <button type="submit" class="btn btn-primary">Cart</button>
+    </form>
 
 </body>
 </html>

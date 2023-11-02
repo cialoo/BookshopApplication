@@ -15,9 +15,14 @@ public class ApplicationController {
     private BookRepository bookRepository;
 
     @GetMapping("/")
-    public String home(Model model) {
+    public String homeGet(Model model) {
         List<Book> books = bookRepository.findAll();
         model.addAttribute("books", books);
-        return "home";
+        return "index";
+    }
+
+    @GetMapping("/cart")
+    public String cartGet() {
+        return "cart";
     }
 }
