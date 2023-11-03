@@ -86,9 +86,7 @@ public class ApplicationController {
         client.setAddress(address);
         client.setPhoneNumber(phoneNumber);
         clientRepository.save(client);
-
-
-
+        
         return "redirect:/order";
     }
 
