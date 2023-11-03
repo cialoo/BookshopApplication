@@ -8,15 +8,28 @@
     <h1>Welcome to Bookshop!!!</h1>
     <h2>By Kacper Śniadek</h2>
 
-    <h2>Order</h2>
-    <p>Number of books: <span th:text="${totalQuantity}"></span></p>
-    <p>Total price: <span th:text="${totalPrice}"></span></p>
-
     <form action="/" method="get">
         <button type="submit" class="btn btn-primary">Books</button>
     </form>
     <form action="/cart" method="get">
         <button type="submit" class="btn btn-primary">Cart</button>
     </form>
+    <form action="/order" method="get">
+        <button type="submit" class="btn btn-primary">Order</button>
+    </form>
+
+    <h2>Order</h2>
+    <p>Number of books: <span th:text="${totalQuantity}"></span></p>
+    <p>Total price: <span th:text="${totalPrice}"></span></p>
+
+    <h2>Enter shipping details</h2>
+    <form method="post" th:action="@{/home}">
+        <label for="title">Tytuł:</label>
+        <input id="title" name="title" required type="text"><br>
+        <label for="description">Opis:</label>
+        <input id="description" name="description" required type="text"><br>
+        <button type="submit">Dodaj</button>
+    </form>
+
 </body>
 </html>

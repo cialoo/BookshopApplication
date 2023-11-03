@@ -9,8 +9,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import pl.kacperSniadek.BookshopApplication.models.Book;
 import pl.kacperSniadek.BookshopApplication.models.Cart;
+import pl.kacperSniadek.BookshopApplication.models.Client;
 import pl.kacperSniadek.BookshopApplication.repository.BookRepository;
 import pl.kacperSniadek.BookshopApplication.repository.CartRepository;
+import pl.kacperSniadek.BookshopApplication.repository.ClientRepository;
 
 import java.util.List;
 
@@ -20,6 +22,8 @@ public class ApplicationController {
     private BookRepository bookRepository;
     @Autowired
     private CartRepository cartRepository;
+    @Autowired
+    private ClientRepository clientRepository;
 
     @GetMapping("/")
     public String homeGet(Model model) {
@@ -70,6 +74,21 @@ public class ApplicationController {
 
         model.addAttribute("totalQuantity", totalQuantity);
         model.addAttribute("totalPrice", totalPrice);
+
         return "order";
     }
+
+    @PostMapping("/order")
+    public String postOrder(@RequestParam String name, @RequestParam String lastname, @RequestParam String address, @RequestParam String phoneNumber) {
+        Client client = new Client();
+        client.setName(name);
+        client.setLastname(lastname);
+        client.setAddress(address);
+        client.setPhoneNumber(phoneNumber);
+
+        clientRepository.save(client);
+
+        return "redirect:/home";
+    }
+
 }
