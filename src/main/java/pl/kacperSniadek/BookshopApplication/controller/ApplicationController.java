@@ -85,10 +85,11 @@ public class ApplicationController {
         client.setLastname(lastname);
         client.setAddress(address);
         client.setPhoneNumber(phoneNumber);
-
         clientRepository.save(client);
 
-        return "redirect:/home";
+
+
+        return "redirect:/order";
     }
 
 }
