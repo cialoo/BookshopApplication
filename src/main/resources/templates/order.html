@@ -23,12 +23,16 @@
     <p>Total price: <span th:text="${totalPrice}"></span></p>
 
     <h2>Enter shipping details</h2>
-    <form method="post" th:action="@{/home}">
-        <label for="title">Tytuł:</label>
-        <input id="title" name="title" required type="text"><br>
-        <label for="description">Opis:</label>
-        <input id="description" name="description" required type="text"><br>
-        <button type="submit">Dodaj</button>
+    <form method="post" th:action="@{/order}">
+        <label for="name">Name: </label>
+        <input id="name" name="name" required type="text"><br>
+        <label for="lastname">Lastname:</label>
+        <input id="lastname" name="lastname" required type="text"><br>
+        <label for="address">Address:</label>
+        <input id="address" name="address" required type="text"><br>
+        <label for="phoneNumber">PhoneNumber:</label>
+        <input id="phoneNumber" name="phoneNumber" required type="text"><br>
+        <button type="submit">Buy</button>
     </form>
 
 </body>
