@@ -11,33 +11,16 @@
     <form action="/" method="get">
         <button type="submit" class="btn btn-primary">Books</button>
     </form>
-    <form action="/cart" method="get">
-        <button type="submit" class="btn btn-primary">Cart</button>
-    </form>
-    <form action="/order" method="get">
-        <button type="submit" class="btn btn-primary">Order</button>
-    </form>
 
     <h2>Books</h2>
     <table border="1">
         <tr>
             <th>Tittle</th>
-            <th>Author</th>
-            <th>Year</th>
             <th>Price</th>
-            <th>Add to cart</th>
         </tr>
         <tr th:each="book : ${books}">
             <td th:text="${book.title}"></td>
-            <td th:text="${book.author}"></td>
-            <td th:text="${book.year}"></td>
             <td th:text="${book.price}"></td>
-            <td>
-                <form th:action="@{/add-to-cart}" method="post">
-                    <input type="hidden" name="bookId" th:value="${book.id}" />
-                    <button type="submit">Add to cart</button>
-                </form>
-            </td>
         </tr>
     </table>
 </body>
