@@ -15,22 +15,19 @@
         <button type="submit" class="btn btn-primary">Cart</button>
     </form>
 
-    <h2>Books</h2>
+    <h2>Cart</h2>
     <table border="1">
         <tr>
-            <th>Tittle</th>
-            <th>Price</th>
-            <th>Add to cart</th>
+            <th>BookId</th>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Phone number</th>
         </tr>
-        <tr th:each="book : ${books}">
-            <td th:text="${book.title}"></td>
-            <td th:text="${book.price}"></td>
-            <td>
-                <form method="post" action="/addToCart">
-                    <input type="hidden" name="id" th:value="${book.id}">
-                    <button type="submit">Add to Cart</button>
-                </form>
-            </td>
+        <tr th:each="cart : ${carts}">
+            <td th:text="${cart.bookId}"></td>
+            <td th:text="${cart.name}"></td>
+            <td th:text="${cart.address}"></td>
+            <td th:text="${cart.phoneNumber}"></td>
         </tr>
     </table>
 </body>

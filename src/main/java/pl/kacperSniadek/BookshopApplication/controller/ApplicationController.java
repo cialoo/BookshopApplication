@@ -7,7 +7,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import pl.kacperSniadek.BookshopApplication.models.Book;
+import pl.kacperSniadek.BookshopApplication.models.Cart;
 import pl.kacperSniadek.BookshopApplication.repository.BookRepository;
+import pl.kacperSniadek.BookshopApplication.repository.CartRepository;
 
 import java.util.List;
 
@@ -15,10 +17,27 @@ import java.util.List;
 public class ApplicationController {
     @Autowired
     private BookRepository bookRepository;
+    @Autowired
+    private CartRepository cartRepository;
     @GetMapping("/")
     public String listOfBooks(Model model) {
         List<Book> books = bookRepository.findAll();
         model.addAttribute("books", books);
         return "index";
+    }
+    @PostMapping("/addToCart")
+    public String addToCart(@RequestParam Long id) {
+        Cart cart = new Cart();
+        cart.setBookId(id);
+        cartRepository.save(cart);
+        return "redirect:/";
+    }
+
+
+    @GetMapping("/cart")
+    public String listOfCart(Model model) {
+        List<Cart> carts = cartRepository.findAll();
+        model.addAttribute("carts", carts);
+        return "cart";
     }
 }
