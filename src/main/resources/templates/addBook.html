@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Bookshop</title>
+</head>
+<body>
+    <h1>Hello Admin</h1>
+    <h2>AddBook</h2>
+
+    <form th:action="@{/admin}" method="post">
+        <label>Name</label>
+        <input type="text" name="name" required>
+        <label>Author</label>
+        <input type="text" name="author" required>
+        <label>Price</label>
+        <input type="number" min="0.01" step="0.01" name="price" required>
+        <button type="submit">Add</button>
+    </form>
+</body>
+</html>

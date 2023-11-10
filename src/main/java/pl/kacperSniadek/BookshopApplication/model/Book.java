@@ -1,6 +1,8 @@
 package pl.kacperSniadek.BookshopApplication.model;
 
-import lombok.AllArgsConstructor;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -9,7 +11,11 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @Getter
 @Setter
+@Entity
 public class Book {
+    @Id
+    @GeneratedValue
+    private Long id;
     private String name;
     private String author;
     private BigDecimal price;
