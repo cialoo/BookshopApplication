@@ -1,7 +1,5 @@
 package pl.kacperSniadek.BookshopApplication;
 
-import lombok.Getter;
-import org.hibernate.annotations.Comment;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Component;
@@ -13,11 +11,22 @@ import java.util.List;
 
 @Component
 @Scope(value = "session", proxyMode = ScopedProxyMode.TARGET_CLASS)
-@Getter
 public class Cart {
     private List<CartBook> cartBooks = new ArrayList<>();
     private int counter = 0;
     private BigDecimal sum = BigDecimal.ZERO;
+
+    public List<CartBook> getCartBooks() {
+        return cartBooks;
+    }
+
+    public int getCounter() {
+        return counter;
+    }
+
+    public BigDecimal getSum() {
+        return sum;
+    }
 
     public void addBook(Book book) {
         boolean notFound = true;
@@ -29,9 +38,9 @@ public class Cart {
                 break;
             }
         }
-
         if(notFound){
             cartBooks.add(new CartBook(book));
+            recalculatePriceAndCounter();
         }
     }
 

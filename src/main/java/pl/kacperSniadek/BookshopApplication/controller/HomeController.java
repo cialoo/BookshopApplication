@@ -32,16 +32,21 @@ public class HomeController {
         model.addAttribute("books", books);
         return "home";
     }
+
     @GetMapping("/add/{bookId}")
     public String addBookToCart(@PathVariable("bookId") Long bookId, Model model) {
-
         Optional<Book> optBook = bookRepository.findById(bookId);
-        if(optBook.isPresent()) {
+        if (optBook.isPresent()) {
             Book book = optBook.get();
             cart.addBook(book);
         }
+
         List<Book> books = bookRepository.findAll();
         model.addAttribute("books", books);
+
+        model.addAttribute("cartCounter", cart.getCounter());
+        model.addAttribute("cartSum", cart.getSum());
+
         return "home";
     }
 }

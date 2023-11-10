@@ -11,8 +11,8 @@
 
     <div>
         <span>Cart</span>
-        <span th:text="${@cart.counter}"></span>
-        <span th:text="${@cart.sum}"></span>
+        <span th:text="${cartCounter}"></span>
+        <span th:text="${cartSum}"></span>
         <span>zł</span>
     </div>
     <br>
@@ -34,6 +34,9 @@
             </td>
         </tr>
     </table>
-
+    <br>
+    <a th:href="@{/order/cart}">
+        <button type="button">Go to Cart</button>
+    </a>
 </body>
 </html>
