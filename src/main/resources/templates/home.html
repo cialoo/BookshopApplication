@@ -5,19 +5,33 @@
     <title>Bookshop</title>
 </head>
 <body>
+
     <h1>Hello to my Bookshop</h1>
     <h2>Home</h2>
 
+    <div>
+        <span>Cart</span>
+        <span th:text="${@cart.counter}"></span>
+        <span th:text="${@cart.sum}"></span>
+        <span>zł</span>
+    </div>
+    <br>
     <table border="1">
         <tr>
             <th>Name</th>
             <th>Author</th>
             <th>Price</th>
+            <th>Add</th>
         </tr>
         <tr th:each="book : ${books}">
             <td th:text="${book.name}"></td>
             <td th:text="${book.author}"></td>
             <td th:text="${book.price}"></td>
+            <td>
+                <form th:action="@{'/add/' + ${book.id}}" method="get">
+                    <button type="submit">Add</button>
+                </form>
+            </td>
         </tr>
     </table>
 

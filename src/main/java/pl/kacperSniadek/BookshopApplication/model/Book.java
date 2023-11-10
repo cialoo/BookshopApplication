@@ -25,4 +25,12 @@ public class Book {
         this.author = author;
         this.price = price;
     }
+
+    public BigDecimal getPrice() {
+        return price;
+    }
+
+    public Long getId() {
+        return id;
+    }
 }
