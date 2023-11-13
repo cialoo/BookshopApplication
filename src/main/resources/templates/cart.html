@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Bookshop</title>
@@ -7,5 +7,34 @@
 <body>
     <h1>Hello to my Bookshop</h1>
     <h2>Cart</h2>
+
+    <table border="1">
+        <tr>
+            <th>Name</th>
+            <th>Author</th>
+            <th>Quantity</th>
+            <th>Amount</th>
+            <th>Sum</th>
+        </tr>
+        <tr th:each="cartBook : ${@cart.cartBooks}">
+            <td th:text="${cartBook.book.name}"></td>
+            <td th:text="${cartBook.book.author}"></td>
+            <td th:text="${cartBook.book.price}"></td>
+            <td>
+                <a class="mbtn" th:href="@{'/order/decrease/' + ${cartBook.book.id}}">-</a>
+                <p th:text="${cartBook.counter}"></p>
+                <a class="mbtn" th:href="@{'/order/increase/' + ${cartBook.book.id}}">+</a>
+            </td>
+            <td th:text="${cartBook.price}"></td>
+        </tr>
+    </table>
+
+    <div>
+        <span><span>To pay </span><span th:text="${@cart.sum}"></span>zł</span>
+    </div>
+    <br>
+    <a th:href="@{/}">
+        <button type="button">Go to Home</button>
+    </a>
 </body>
 </html>

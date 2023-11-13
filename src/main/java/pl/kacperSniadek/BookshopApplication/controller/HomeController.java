@@ -30,6 +30,9 @@ public class HomeController {
     public String home(Model model) {
         List<Book> books = bookRepository.findAll();
         model.addAttribute("books", books);
+
+        model.addAttribute("cartCounter", cart.getCounter());
+        model.addAttribute("cartSum", cart.getSum());
         return "home";
     }
 
