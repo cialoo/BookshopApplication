@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Bookshop</title>
@@ -7,5 +7,39 @@
 <body>
     <h1>Hello to my Bookshop</h1>
     <h2>Summary</h2>
+
+    <table border="1">
+        <tr>
+            <th>Name</th>
+            <th>Author</th>
+            <th>Quantity</th>
+            <th>Amount</th>
+            <th>Sum</th>
+        </tr>
+        <tr th:each="cartBook : ${@cart.cartBooks}">
+            <td th:text="${cartBook.book.name}"></td>
+            <td th:text="${cartBook.book.author}"></td>
+            <td th:text="${cartBook.book.price}"></td>
+            <td th:text="${cartBook.counter}"></td>
+            <td th:text="${cartBook.price}"></td>
+        </tr>
+    </table>
+    <div>
+        <span><span>To pay </span><span th:text="${@cart.sum}"></span>zł</span>
+    </div>
+    <br>
+    <form th:action="@{/order/saveOrder}" method="post">
+        <label>First name</label>
+        <input type="text" name="firstName" required>
+        <label>Last name</label>
+        <input type="text" name="lastName" required>
+        <label>Address</label>
+        <input type="text" name="address" required>
+        <label>City</label>
+        <input type="text" name="city" required>
+        <label>Post code</label>
+        <input type="text" name="postCode" required>
+        <button type="submit" class="add-btn">Order</button>
+    </form>
 </body>
 </html>

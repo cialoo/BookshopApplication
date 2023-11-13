@@ -67,4 +67,10 @@ public class Cart {
         this.counter = tempCounter;
         this.sum = tempPrice;
     }
+
+    public void clearCart() {
+        cartBooks.clear();
+        counter = 0;
+        sum = BigDecimal.ZERO;
+    }
 }

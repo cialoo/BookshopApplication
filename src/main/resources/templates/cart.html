@@ -33,6 +33,10 @@
         <span><span>To pay </span><span th:text="${@cart.sum}"></span>zł</span>
     </div>
     <br>
+    <a th:href="@{/order/summary}">
+        <button type="button">Go to Summary</button>
+    </a>
+    <br>
     <a th:href="@{/}">
         <button type="button">Go to Home</button>
     </a>
